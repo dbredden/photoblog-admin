@@ -2,9 +2,9 @@ name: Admin CI
 
 on:
   push:
-    paths:
-      - 'photoblog-admin/**'
+    branches: [ master ]
   pull_request:
+    branches: [ master ]
 
 jobs:
   build:
