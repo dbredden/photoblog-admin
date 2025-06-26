@@ -5,7 +5,7 @@ import type { Dayjs } from "dayjs";
 export function useUpload() {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [title, setTitle] = useState("");
+  const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState<Dayjs | null>(dayjs());
 
@@ -27,11 +27,12 @@ export function useUpload() {
 
     const formData = new FormData();
     formData.append("image", file);
-    formData.append("title", title);
+    formData.append("location", location);
     formData.append("description", description);
-    formData.append("date", date.toISOString());
+    formData.append("date", date.format("YYYY-MM-DD"));
+;
 
-    await fetch("/api/posts", {
+    await fetch("http://localhost:5161/api/posts", {
       method: "POST",
       body: formData,
     });
@@ -43,8 +44,8 @@ export function useUpload() {
     file,
     setFile,
     previewUrl,
-    title,
-    setTitle,
+    location,
+    setLocation,
     description,
     setDescription,
     date,

@@ -16,8 +16,8 @@ export default function Home() {
     file,
     setFile,
     previewUrl,
-    title,
-    setTitle,
+    location,
+    setLocation,
     description,
     setDescription,
     date,
@@ -58,10 +58,10 @@ export default function Home() {
           <div>
             <input
               type="text"
-              placeholder="Title"
+              placeholder="Location"
               className="w-full p-3 border border-gray-600 bg-gray-900 rounded"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
             />
           </div>
 
@@ -69,19 +69,33 @@ export default function Home() {
             <textarea
               placeholder="Description"
               className="w-full p-3 border border-gray-600 bg-gray-900 rounded"
-              rows={4}
+              rows={5}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
 
-          <div className="bg-white rounded">
+          <div className="w-full">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label="Select Date"
                 value={date}
                 onChange={(newDate) => setDate(newDate)}
-                //renderInput={(params) => <TextField fullWidth {...params} />}
+                slotProps={{
+                  textField: {
+                    fullWidth: true,
+                    InputLabelProps: { style: { color: "#9CA3AF" } },
+                    InputProps: {
+                      style: {
+                        backgroundColor: "#0f172a",     
+                        color: "white",
+                        border: "1px solid #4B5563",    
+                        borderRadius: "4px",
+                        padding: "12px",
+                      },
+                    },
+                  },
+                }}
               />
             </LocalizationProvider>
           </div>
