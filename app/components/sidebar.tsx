@@ -14,6 +14,14 @@ export default function Sidebar() {
           Upload
         </Link>
       </nav>
+      <nav className="flex-1 px-4">
+      <Link
+          to="/edit"
+          className="block py-2 text-white hover:text-blue-600 transition-colors"
+        >
+          Edit
+        </Link>
+      </nav>
     </aside>
   );
 }
